@@ -1,5 +1,6 @@
 %h1= @post.title
 %p= @post.body
+%p= @post.author
 
 = link_to 'Destroy', @post, :method => :delete, :data => { :confirm => 'Are you sure?' }
 = link_to 'Main', posts_path 

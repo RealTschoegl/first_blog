@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+
   end
 
   def create
@@ -18,10 +19,8 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post}
-        format.json { render json: @post }
       else
         format.html { render action: "new"}
-        format.json { render json: @post.errors, status:  :unprocessable_entity }
       end
     end
   end 

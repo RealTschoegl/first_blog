@@ -1,12 +1,9 @@
 %h1 Editing Product
 
-= form_for @post do |p|
-  = p.label :title
-  = p.text_field :title
+- if @post.errors.any?
+  - @post.errors.full_messages.each do |msg|
+    = "Error: #{msg}"
 
-  = p.label :body
-  = p.text_area :body
-
-  = p.submit
+= render "form" 
   
 = link_to 'Main', posts_path 
