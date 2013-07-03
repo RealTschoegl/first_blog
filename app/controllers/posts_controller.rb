@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @name = "Shehzan"
-    @posts = Post.all
+    @posts = Post.all.sort_by &:title
   end
 
   def show
@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-
   end
 
   def create
@@ -20,6 +19,7 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to @post}
       else
+        flash[:notice] = "Your entry did not save.  Explanation below."
         format.html { render action: "new"}
       end
     end
